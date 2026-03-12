@@ -69,6 +69,36 @@
         .feature-title { color: #ffff00 !important; font-weight: bold; }
         a { color: #00bfff; text-decoration: none; overflow-wrap: break-word; }
         a:hover { text-decoration: underline; }
+        
+        /* Unified button styling - no underline on hover for red/purple buttons */
+        .red-button,
+        .purple-button {
+            display: block;
+            padding: 12px 24px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            width: 220px;
+        }
+        .red-button {
+            background-color: #ff3333;
+            margin: 10px;
+        }
+        .red-button:hover {
+            background-color: #cc2222;
+            text-decoration: none;
+        }
+        .purple-button {
+            background-color: #800080;
+            margin: 15px auto 0;
+        }
+        .purple-button:hover {
+            background-color: #660066;
+            text-decoration: none;
+        }
+        
         .top-section {
             display: flex;
             gap: 40px;
@@ -92,26 +122,6 @@
         }
         .logo-item { text-align: center; }
         .logo-image { width: 350px; height: auto; display: block; }
-        .download-button {
-            display: block; margin: 15px auto 0; padding: 12px 24px;
-            background-color: purple; color: white; text-align: center;
-            text-decoration: none; border-radius: 5px; font-weight: bold; width: 150px;
-        }
-        .download-button:hover { background-color: #800080; }
-        /* New red buttons (same style as download buttons but red) */
-        .red-button {
-            display: block;
-            padding: 12px 24px;
-            background-color: #ff3333;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            width: 220px;
-            margin: 10px;
-        }
-        .red-button:hover { background-color: #cc2222; }
         .videos-container {
             display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;
             margin: 60px 0; background-color: rgba(0,0,0,0.7);
@@ -132,7 +142,7 @@
             font-size: 10px;
             margin: 0 auto 30px;
         }
-        /* Rounded container for main title video (keeps original image dimensions feel - large & wide) */
+        /* Rounded container for main title video */
         .hero-video-wrapper {
             max-width: 1000px;
             margin: 0 auto 50px;
@@ -280,7 +290,8 @@
             .more-info-section { padding: 20px; }
             .more-info-section h2, .more-info-section p { font-size: 14px; }
             .hero-video-wrapper iframe { height: 315px; }
-            .red-button { width: 100%; max-width: 280px; }
+            .red-button,
+            .purple-button { width: 100%; max-width: 280px; }
         }
     </style>
 </head>
@@ -295,7 +306,7 @@
     <h1>Hamachi the Psychotic Killer</h1>
     <p class="asset-load-note">The platformer game where you can play as a Serial Killer</p>
    
-    <!-- Hero YouTube trailer (exact same dimensions feel as original 2HamachiTitleLogo.png - large, wide, and prominent) -->
+    <!-- Hero YouTube trailer -->
     <div class="hero-video-wrapper">
         <iframe 
             src="https://www.youtube.com/embed/VbFZFto8Naw" 
@@ -313,7 +324,7 @@
         </div>
     </div>
 
-    <!-- Community Fan Works (moved up) -->
+    <!-- Community Fan Works -->
     <h2 class="red">Community Fan Works</h2>
     <div class="screenshots-container">
         <div class="carousel" id="fanart-carousel">
@@ -360,7 +371,7 @@
         </div>
     </div>
 
-    <!-- Roblox Adaptation (moved up) -->
+    <!-- Roblox Adaptation -->
     <h2 class="red">Roblox Adaptation</h2>
     <div class="videos-container">
         <div class="video-wrapper">
@@ -373,13 +384,13 @@
         </div>
     </div>
 
-    <!-- Awards (moved up) -->
+    <!-- Awards -->
     <h2 class="red">Awards</h2>
     <div class="awards-container">
         <img src="https://gavinoriley.github.io/assets/awardlaur.png" alt="Awards Graphic" class="award-image">
     </div>
 
-    <!-- Side-by-side Factsheet & Elevator Pitch / Description / Our Story (now after the moved sections) -->
+    <!-- Side-by-side Factsheet & Elevator Pitch / Description / Our Story -->
     <div class="top-section">
         <div class="factsheet-block">
             <h2 class="red">Factsheet</h2>
@@ -430,15 +441,15 @@
     <div class="logos-container">
         <div class="logo-item">
             <img src="https://gavinoriley.github.io/assets/logohamachi1.png" alt="Logo Variant 1" class="logo-image">
-            <a href="https://gavinoriley.github.io/assets/logohamachi1.png" download class="download-button">Download</a>
+            <a href="https://gavinoriley.github.io/assets/logohamachi1.png" download class="purple-button">DOWNLOAD</a>
         </div>
         <div class="logo-item">
             <img src="https://gavinoriley.github.io/assets/logohamachi2.png" alt="Logo Variant 2" class="logo-image">
-            <a href="https://gavinoriley.github.io/assets/logohamachi2.png" download class="download-button">Download</a>
+            <a href="https://gavinoriley.github.io/assets/logohamachi2.png" download class="purple-button">DOWNLOAD</a>
         </div>
         <div class="logo-item">
             <img src="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png" alt="Main Title Logo" class="logo-image">
-            <a href="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png" download class="download-button">Download</a>
+            <a href="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png" download class="purple-button">DOWNLOAD</a>
         </div>
     </div>
     <h2 class="red">Videos</h2>
