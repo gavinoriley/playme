@@ -136,7 +136,7 @@
             <p style="text-align: center;">3D community adaptation.</p>
         </div>
         <div class="video-wrapper" style="max-width: 560px;">
-            <iframe src="https://www.youtube.com/embed/C7lAc6bOt4k" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/C7lAc6bOt4k" frameborder="0" allowfullscreen></iframe>
             <p style="text-align: center;">Powerup Theme</p>
         </div>
     </div>
@@ -185,17 +185,17 @@
     <div class="top-section" id="factsheet">
         <div class="factsheet-block">
             <h2 class="red">Factsheet</h2>
-            <p><strong>Developer:</strong> Gavin O'Riley (Los Angeles, CA)</p>
+            <p><strong>Developer:</strong> Gavin ORiley (Los Angeles, CA)</p>
             <p><strong>Release Date:</strong> February 27, 2026</p>
             <p><strong>Genre:</strong> Horror / Platformer</p>
             <p><strong>Features:</strong> Kill Counter System, Branching Morality Paths, 8 Original Worlds.</p>
         </div>
     </div>
-    <h2 id="assets" class="red">Brand Assets & Logos</h2>
+    <h2 id="assets" class="red">Brand Assets & Logos (click to enlarge)</h2>
     <div class="logos-container">
-        <img src="https://gavinoriley.github.io/assets/logohamachi1.png" class="logo-image">
-        <img src="https://gavinoriley.github.io/assets/logohamachi2.png" class="logo-image">
-        <img src="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png" class="logo-image">
+        <img src="https://gavinoriley.github.io/assets/logohamachi1.png" class="logo-image" onclick="openModal(this.src)" alt="Logo 1">
+        <img src="https://gavinoriley.github.io/assets/logohamachi2.png" class="logo-image" onclick="openModal(this.src)" alt="Logo 2">
+        <img src="https://gavinoriley.github.io/assets/2HamachiTitleLogo.png" class="logo-image" onclick="openModal(this.src)" alt="Title Logo">
     </div>
     <h2 class="red">Gameplay Screenshots</h2>
     <div class="screenshots-container">
@@ -267,7 +267,10 @@
         </p>
     </div>
     <p style="text-align:center; font-size:10px; margin:40px 0;">© 2026 Hamachi the Psychotic Killer. All rights reserved.</p>
-    <div id="myModal" class="modal"><span class="close" onclick="closeModal()">×</span><img class="modal-content" id="img01"></div>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="img01">
+    </div>
     <script>
         function initCarousel(carouselId) {
             let slideIndex = 1;
@@ -285,7 +288,21 @@
         initCarousel('fanart-carousel');
         initCarousel('screenshot-carousel');
         initCarousel('endings-carousel');
-        function closeModal() { document.getElementById("myModal").style.display = "none"; }
+
+        function openModal(src) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = src;
+            // Clicking ANYWHERE on the modal (background OR the enlarged image) will close it
+            modal.onclick = function() {
+                closeModal();
+            };
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
     </script>
 </body>
 </html>
