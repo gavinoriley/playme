@@ -12,18 +12,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamachi the Psychotic Killer Page</title>
+
+    <!-- Font Preload - Critical for cross-browser support -->
+    <link rel="preload" href="/assets/FSEX300.woff2" as="font" type="font/woff2" crossorigin>
+
     <style>
         @font-face {
             font-family: 'FSEX300';
-            src: url('https://gavinoriley.github.io/assets/FSEX300.woff2') format('woff2'),
-                 url('https://gavinoriley.github.io/assets/FSEX300.woff') format('woff'),
-                 url('https://gavinoriley.github.io/assets/FSEX300.ttf') format('truetype');
+            src: url('/assets/FSEX300.woff2') format('woff2'),
+                 url('/assets/FSEX300.woff') format('woff'),
+                 url('/assets/FSEX300.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
-        * { 
-            cursor: url('https://gavinoriley.github.io/assets/sprCursor_3.png'), auto; 
+        * {
+            cursor: url('https://gavinoriley.github.io/assets/sprCursor_3.png'), auto;
         }
         body {
             margin: 0 auto;
@@ -38,8 +42,6 @@
             color: white;
             font-family: Arial, Helvetica, sans-serif;
         }
-
-        /* === EXACT NAVBAR STYLE FROM HOMEPAGE + CUSTOM FONT === */
         .navbar {
             position: fixed;
             top: 0;
@@ -55,8 +57,6 @@
             border-bottom: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
         }
-
-        /* Custom font applied ONLY to navbar links */
         .navbar a {
             font-family: 'FSEX300', Arial, sans-serif;
             color: #fff;
@@ -66,11 +66,9 @@
             border-radius: 4px;
             transition: color 0.3s ease;
         }
-
         .navbar a:hover {
             color: #cccccc;
         }
-
         @media (max-width: 768px) {
             .navbar {
                 gap: 20px;
@@ -81,127 +79,124 @@
                 font-size: 16px;
             }
         }
-
-        h1 { 
-            text-align: center; 
-            color: white; 
-            margin-top: 90px; 
-            margin-bottom: 10px; 
+        h1 {
+            text-align: center;
+            color: white;
+            margin-top: 90px;
+            margin-bottom: 10px;
         }
-        .asset-load-note { 
-            text-align: center; 
-            color: white; 
-            font-size: 16px; 
-            margin-bottom: 30px; 
+        .asset-load-note {
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
-        h2.red { 
-            color: #ff3333; 
-            margin-top: 40px; 
-            border-bottom: 2px solid #333; 
-            padding-bottom: 10px; 
+        h2.red {
+            color: #ff3333;
+            margin-top: 40px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
         }
         .red-button {
-            display: block; 
-            padding: 12px 24px; 
-            color: white; 
+            display: block;
+            padding: 12px 24px;
+            color: white;
             text-align: center;
-            text-decoration: none; 
-            border-radius: 5px; 
-            font-weight: bold; 
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
             width: 220px;
+            background-color: #ff3333;
+            margin: 10px;
         }
-        .red-button { 
-            background-color: #ff3333; 
-            margin: 10px; 
+        .red-button:hover {
+            background-color: #cc2222;
         }
-        .red-button:hover { 
-            background-color: #cc2222; 
-        }
-        .top-section { 
-            display: flex; 
-            gap: 40px; 
-            margin-bottom: 60px; 
-            align-items: flex-start; 
+        .top-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: flex-start;
         }
         .factsheet-block {
-            flex: 1; 
-            background-color: rgba(0,0,0,0.8); 
-            padding: 25px; 
+            flex: 1;
+            background-color: rgba(0,0,0,0.8);
+            padding: 25px;
             border-radius: 10px;
         }
-        @media (max-width: 900px) { 
-            .top-section { flex-direction: column; } 
+        @media (max-width: 900px) {
+            .top-section { flex-direction: column; }
         }
         .logos-container, .videos-container, .screenshots-container, .awards-container, .contact-container {
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 40px; 
-            margin: 20px 0; 
+            gap: 40px;
+            margin: 20px 0;
             background-color: rgba(0,0,0,0.7);
-            border-radius: 10px; 
+            border-radius: 10px;
             padding: 30px;
         }
-        .logo-image { 
-            width: 300px; 
-            height: auto; 
-            display: block; 
-            cursor: pointer; 
+        .logo-image {
+            width: 300px;
+            height: auto;
+            display: block;
+            cursor: pointer;
         }
-        .video-wrapper { 
-            flex: 1 1 300px; 
-            max-width: 560px; 
+        .video-wrapper {
+            flex: 1 1 300px;
+            max-width: 560px;
         }
-        .video-wrapper iframe { 
-            width: 100%; 
-            height: 315px; 
-            border: none; 
+        .video-wrapper iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
         }
-        .award-image { 
-            max-width: 800px; 
-            width: 100%; 
-            height: auto; 
+        .award-image {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
         }
-        .carousel { 
-            position: relative; 
-            max-width: 800px; 
-            margin: auto; 
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
         }
-        .carousel-item { 
-            display: none; 
-            width: 100%; 
+        .carousel-item {
+            display: none;
+            width: 100%;
         }
-        .carousel-item.active { 
-            display: block; 
+        .carousel-item.active {
+            display: block;
         }
-        .carousel-item img { 
-            width: 100%; 
-            height: auto; 
-            cursor: pointer; 
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
         }
         .prev, .next {
-            cursor: pointer; 
-            position: absolute; 
-            top: 50%; 
-            width: auto; 
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
             padding: 16px;
-            color: white; 
-            font-weight: bold; 
-            background-color: rgba(0,0,0,0.5); 
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0,0,0,0.5);
             user-select: none;
         }
         .next { right: 0; }
-        .modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 1001; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0,0,0,0.9); 
-            padding-top: 60px; 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            padding-top: 60px;
         }
         .modal-content {
             margin: auto;
@@ -211,14 +206,14 @@
             width: auto;
             height: auto;
         }
-        .close { 
-            position: absolute; 
-            top: 15px; 
-            right: 35px; 
-            color: #f1f1f1; 
-            font-size: 40px; 
-            font-weight: bold; 
-            cursor: pointer; 
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
         .contact-container p {
             margin: 10px 0;
@@ -251,11 +246,10 @@
 
     <h1>Hamachi the Psychotic Killer</h1>
     <p class="asset-load-note">The world's first traditional 2D platformer that lets you play as a serial killer.</p>
-    
+   
     <div style="max-width: 1000px; margin: 0 auto 50px; border-radius: 30px; overflow: hidden;">
         <iframe width="100%" height="562" src="https://www.youtube.com/embed/VbFZFto8Naw" frameborder="0" allowfullscreen></iframe>
     </div>
-
     <div style="text-align: center; margin-bottom: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank" class="red-button">STEAM PAGE</a>
         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" class="red-button">PLAY ONLINE DEMO</a>
@@ -346,6 +340,7 @@
     <h2 class="red">Gameplay Screenshots</h2>
     <div class="screenshots-container">
         <div class="carousel" id="screenshot-carousel">
+            <!-- All your screenshots here -->
             <div class="carousel-item active">
                 <img src="https://gavinoriley.github.io/assets/finalcara1.jpg" alt="Screenshot 1" onclick="openModal(this.src)">
             </div>
@@ -429,31 +424,42 @@
 
     <p style="text-align:center; font-size:10px; margin:40px 0;">© 2026 Hamachi the Psychotic Killer. All rights reserved.</p>
 
+    <!-- Modal -->
     <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">×</span>
         <img class="modal-content" id="img01">
     </div>
 
     <script>
-        function initCarousel(carouselId) {
-            let slideIndex = 1;
-            const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
-            const showSlides = (n) => {
-                if (n > slides.length) slideIndex = 1;
-                if (n < 1) slideIndex = slides.length;
-                slides.forEach(s => s.style.display = "none");
-                slides[slideIndex - 1].style.display = "block";
-            };
-            const prev = document.querySelector(`#${carouselId} .prev`);
-            const next = document.querySelector(`#${carouselId} .next`);
-            if (prev) prev.onclick = () => showSlides(--slideIndex);
-            if (next) next.onclick = () => showSlides(++slideIndex);
-            showSlides(slideIndex);
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            function initCarousel(carouselId) {
+                const carousel = document.getElementById(carouselId);
+                if (!carousel) return;
 
-        initCarousel('fanart-carousel');
-        initCarousel('screenshot-carousel');
-        initCarousel('endings-carousel');
+                let slideIndex = 1;
+                const slides = carousel.querySelectorAll('.carousel-item');
+                if (slides.length === 0) return;
+
+                const prevBtn = carousel.querySelector('.prev');
+                const nextBtn = carousel.querySelector('.next');
+
+                const showSlides = (n) => {
+                    if (n > slides.length) slideIndex = 1;
+                    if (n < 1) slideIndex = slides.length;
+                    slides.forEach(s => s.style.display = "none");
+                    slides[slideIndex - 1].style.display = "block";
+                };
+
+                if (prevBtn) prevBtn.onclick = () => showSlides(--slideIndex);
+                if (nextBtn) nextBtn.onclick = () => showSlides(++slideIndex);
+
+                showSlides(slideIndex);
+            }
+
+            initCarousel('fanart-carousel');
+            initCarousel('screenshot-carousel');
+            initCarousel('endings-carousel');
+        });
 
         function openModal(src) {
             const modal = document.getElementById("myModal");
