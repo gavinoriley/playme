@@ -162,7 +162,7 @@
             align-items: center;
             gap: 24px;
             width: 85%;
-            max-width: 750px;
+            max-width: 850px;
         }
 
         .hero-content-wrapper img {
@@ -177,6 +177,7 @@
             align-items: center;
             gap: 16px;
             width: 100%;
+            flex-wrap: wrap;
         }
 
         .pill-btn {
@@ -193,6 +194,7 @@
             text-decoration: none;
             transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
         }
 
         .pill-btn:hover {
@@ -259,6 +261,65 @@
         }
 
         .video-modal-close-btn:hover {
+            color: #ff3333;
+            transform: scale(1.1);
+        }
+
+        /* === SYNOPSIS SPECIFIC MODAL LAYOUT === */
+        .synopsis-modal-box {
+            position: relative;
+            width: 92%;
+            max-width: 1000px;
+            max-height: 85vh;
+            background-color: #000;
+            border: 2px solid #cc1111;
+            border-radius: 6px;
+            box-shadow: 0 15px 50px rgba(204, 17, 17, 0.35);
+            display: flex;
+            padding: 40px;
+            gap: 40px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .synopsis-left {
+            flex: 1.6;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .synopsis-right {
+            flex: 1;
+            border-left: 2px solid #333;
+            padding-left: 30px;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .synopsis-left ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .synopsis-left li {
+            margin-bottom: 10px;
+        }
+
+        .synopsis-modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 38px;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            z-index: 10;
+        }
+
+        .synopsis-modal-close-btn:hover {
             color: #ff3333;
             transform: scale(1.1);
         }
@@ -441,6 +502,18 @@
                 right: 4px;
                 font-size: 28px;
             }
+
+            .synopsis-modal-box {
+                flex-direction: column;
+                gap: 20px;
+                padding: 30px 20px 20px 20px;
+            }
+            .synopsis-right {
+                border-left: none;
+                border-top: 2px solid #333;
+                padding-left: 0;
+                padding-top: 20px;
+            }
         }
     </style>
 </head>
@@ -467,6 +540,7 @@
                     <div class="hero-action-row">
                         <a href="#" class="pill-btn" onclick="openTrailerModal(event)">WATCH TRAILER</a>
                         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" rel="noopener noreferrer" class="pill-btn">PLAY DEMO</a>
+                        <a href="#" class="pill-btn" onclick="openSynopsisModal(event)">SYNOPSIS</a>
                         <a href="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3355690/manuals/4d24f19e6c5b25a41f86c5655abce55091d9eebc/hamachicube.pdf?t=1746692821" target="_blank" rel="noopener noreferrer" class="pill-btn">HAMACHI CUBE</a>
                     </div>
                 </div>
@@ -482,9 +556,41 @@
         </div>
     </div>
 
+    <!-- NEW SYNOPSIS LIGHTBOX MODAL -->
+    <div class="video-modal-overlay" id="synopsisLightbox" onclick="closeSynopsisModal(event)" data-lenis-prevent>
+        <div class="synopsis-modal-box" onclick="event.stopPropagation()">
+            <button class="synopsis-modal-close-btn" onclick="closeSynopsisModal(event)" aria-label="Close synopsis pop-up">&times;</button>
+            
+            <!-- Left Hand Side Information -->
+            <div class="synopsis-left">
+                <p>In this platformer, you control a piece of tofu named Hamachi, who unexpectedly falls into the possession of Demon Queen Deity, an evil fiend who intends to use him as a vessel to conquer the world through mass murder.</p>
+                <strong style="color: #ff3333; display: block; margin-top: 15px;">FEATURES:</strong>
+                <ul>
+                    <li>Play as the villain: Choose to kill, spare, or ignore every civilian.</li>
+                    <li>Three distinct routes: Pacifist, Neutral, and Genocide, each with its own ending.</li>
+                    <li>Defeat or pacify demonic bosses, pacified bosses will join your side.</li>
+                    <li>Journey through 8 visually distinct worlds built with original pixel art.</li>
+                    <li>Chainsaw power-up grants temporary invincibility and destroys any being you touch.</li>
+                    <li>Collect souls from dead civilians or sushi dropped by Penelope Pom Pom Pink to restore health.</li>
+                    <li>Your crimes will not go unnoticed by the authorities.</li>
+                </ul>
+            </div>
+
+            <!-- Right Hand Side Information -->
+            <div class="synopsis-right">
+                <p><strong style="color: #ff3333;">TITLE:</strong><br>Hamachi the Psychotic Killer</p>
+                <p><strong style="color: #ff3333;">GENRE:</strong><br>Action, Indie</p>
+                <p><strong style="color: #ff3333;">DEVELOPER:</strong><br>gavinoriley</p>
+                <p><strong style="color: #ff3333;">PUBLISHER:</strong><br>gavinoriley</p>
+                <p><strong style="color: #ff3333;">RELEASE DATE:</strong><br>Feb 27, 2026</p>
+                <p><strong style="color: #ff3333;">PLATFORM:</strong><br>Windows/Mac</p>
+            </div>
+        </div>
+    </div>
+
     <!-- MAIN BODY CONTENT CONTENT WRAPPER -->
     <div class="main-content-wrapper">
-        <h2 id="traction" class="red">Awards</h2>
+        <h2 id="traction" class="red">Hamachi attended Dreamhack Atlanta and Dreamhack Anaheim</h2>
         <div class="awards-container">
             <img src="https://gavinoriley.github.io/assets/dreamhack1.JPG" alt="DreamHack Award" class="award-image" onclick="openModal(this.src)">
             <img src="https://gavinoriley.github.io/assets/awardlaur.png" alt="Awards Graphic" class="award-image" onclick="openModal(this.src)">
@@ -506,13 +612,13 @@
                     <a href="https://x.com/TheDeepRoblox/status/2072483039209218242"></a>
                 </blockquote>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's new Roblox Model/Ability Demonstration</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's new and First Roblox Model/Ability Demonstration</p>
             </div>
 
             <!-- Drive Video Component Wrapper -->
             <div class="video-wrapper" style="flex: 0 0 auto; max-width: 900px; width: 100%; margin-bottom: 30px;">
                 <iframe src="https://drive.google.com/file/d/1nj5ezBpLL-szqQZ-ElnoiPgdA0qZFoAp/preview" width="900" height="675" style="width: 100%; height: 675px; border: none;" allowfullscreen></iframe>
-                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Prototype Demonstration</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">(old) Prototype Demonstration</p>
             </div>
 
             <div class="roblox-render-container">
@@ -533,7 +639,7 @@
             </div>
         </div>
         
-        <h2 class="red">Fan Art (Select examples, there are over 40+ pieces of original fan art now!)</h2>
+        <h2 class="red">Fan Art (Select examples. There are over 40+ pieces of original fan art now.)</h2>
         <div class="screenshots-container">
             <div class="carousel" id="fanart-carousel">
                 <div class="carousel-item active">
@@ -581,15 +687,15 @@
                 <a class="prev">&#10094;</a><a class="next">&#10095;</a>
             </div>
         </div>
+        
+        <!-- UPDATED LEARNING / SYNOPSIS SECTION -->
         <div class="top-section" id="factsheet">
-            <div class="factsheet-block">
-                <h2 class="red">Factsheet</h2>
-                <p><strong>Developer:</strong> Gavin ORiley (Los Angeles, CA)</p>
-                <p><strong>Release Date:</strong> February 27, 2026</p>
-                <p><strong>Genre:</strong> Horror / 2D Platformer</p>
-                <p><strong>Features:</strong> Kill Counter System, 3 Endings, 8 Original Worlds.</p>
+            <div class="factsheet-block" style="text-align: center; padding: 40px 20px;">
+                <h2 class="red" style="margin-top: 0;">Learn more about the Game</h2>
+                <button class="pill-btn" style="font-size: 22px; padding: 14px 40px; margin-top: 20px;" onclick="openSynopsisModal(event)">CLICK HERE FOR SYNOPSIS</button>
             </div>
         </div>
+
         <h2 id="assets" class="red">Brand Assets & Logos (click to enlarge)</h2>
         <div class="logos-container">
             <img src="https://gavinoriley.github.io/assets/logohamachi1.png" class="logo-image" onclick="openModal(this.src)" alt="Logo 1">
@@ -682,7 +788,7 @@
                 <a href="https://gamejolt.com/games/hamachithepsychotickiller/334593" target="_blank">GameJolt Page</a>
             </p>
         </div>
-        <p style="text-align:center; font-size:10px; margin:40px 0;">© 2026 Hamachi the Psychotic Killer. All rights reserved.</p>
+        <p style="text-align:center; font-size:10px; margin:40px 0;">&copy; 2026 Hamachi the Psychotic Killer. All rights reserved.</p>
     </div>
 
     <!-- Gallery Image Modal -->
@@ -750,6 +856,21 @@
             trailerLightbox.classList.remove('open');
             modalVideoIframe.src = "";
             document.body.style.overflow = ''; 
+        }
+
+        /* Synopsis Modal Control Functions */
+        const synopsisLightbox = document.getElementById('synopsisLightbox');
+
+        function openSynopsisModal(event) {
+            if (event) event.preventDefault();
+            synopsisLightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSynopsisModal(event) {
+            if (event) event.preventDefault();
+            synopsisLightbox.classList.remove('open');
+            document.body.style.overflow = '';
         }
 
         /* Image Gallery Modal Functions */
