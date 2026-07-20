@@ -265,58 +265,85 @@
             transform: scale(1.1);
         }
 
-        /* === SYNOPSIS SPECIFIC MODAL LAYOUT === */
+        /* === CORRECT MINIMALIST SYNOPSIS LIGHTBOX LAYOUT === */
         .synopsis-modal-box {
             position: relative;
-            width: 92%;
-            max-width: 1000px;
-            max-height: 85vh;
-            background-color: #000;
-            border: 2px solid #cc1111;
-            border-radius: 6px;
-            box-shadow: 0 15px 50px rgba(204, 17, 17, 0.35);
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            background: transparent;
             display: flex;
-            padding: 40px;
-            gap: 40px;
+            padding: 60px 20px;
+            gap: 50px;
             overflow-y: auto;
             text-align: left;
+            font-family: 'FSEX300', monospace, sans-serif;
         }
 
         .synopsis-left {
-            flex: 1.6;
-            font-size: 20px;
-            line-height: 1.5;
+            flex: 1.4;
+            font-size: 22px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+            padding-right: 50px;
         }
 
         .synopsis-right {
             flex: 1;
-            border-left: 2px solid #333;
-            padding-left: 30px;
-            font-size: 20px;
-            line-height: 1.6;
+            padding-left: 10px;
+        }
+
+        .synopsis-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            row-gap: 24px;
+            column-gap: 20px;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .synopsis-key {
+            color: #ff3333;
+            font-weight: bold;
+        }
+
+        .synopsis-value {
+            color: #ffffff;
         }
 
         .synopsis-left ul {
             padding-left: 20px;
-            margin-top: 10px;
+            margin-top: 15px;
+            list-style-type: none;
         }
 
         .synopsis-left li {
-            margin-bottom: 10px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+        
+        .synopsis-left li::before {
+            content: "•";
+            color: #ff3333;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
 
         .synopsis-modal-close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
+            position: fixed;
+            top: 25px;
+            left: 25px;
             background: none;
             border: none;
             color: #ffffff;
-            font-size: 38px;
+            font-size: 42px;
             line-height: 1;
             cursor: pointer;
             transition: color 0.2s ease, transform 0.2s ease;
-            z-index: 10;
+            z-index: 3100;
         }
 
         .synopsis-modal-close-btn:hover {
@@ -372,9 +399,10 @@
             border: none;
         }
         .award-image {
-            max-width: 800px;
+            max-width: 45%;
             width: 100%;
             height: auto;
+            object-fit: contain;
         }
         .carousel {
             position: relative;
@@ -450,7 +478,7 @@
         .screenshot-caption {
             text-align: center;
             margin-top: 8px;
-            font-size: 22px; /* Fixed: Enhanced visibility for gallery/carousel captions */
+            font-size: 22px;
             color: #ddd;
         }
         .roblox-render-container {
@@ -482,7 +510,7 @@
             text-decoration: underline;
         }
 
-        /* Video Hero Breakpoint Rules */
+        /* Video Hero / Responsive Breakpoint Rules */
         @media screen and (max-width: 768px) {
             .title-section { padding-top: 0; }
             .hero-video-container { height: 60vh; }
@@ -505,14 +533,21 @@
 
             .synopsis-modal-box {
                 flex-direction: column;
-                gap: 20px;
-                padding: 30px 20px 20px 20px;
+                gap: 30px;
+                padding: 80px 20px 30px 20px;
             }
-            .synopsis-right {
-                border-left: none;
-                border-top: 2px solid #333;
-                padding-left: 0;
-                padding-top: 20px;
+            .synopsis-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+            .synopsis-grid {
+                grid-template-columns: 130px 1fr;
+                font-size: 18px;
+            }
+            .award-image {
+                max-width: 100%;
             }
         }
     </style>
@@ -556,15 +591,15 @@
         </div>
     </div>
 
-    <!-- NEW SYNOPSIS LIGHTBOX MODAL -->
+    <!-- NEW CORRECTED SYNOPSIS LIGHTBOX MODAL -->
     <div class="video-modal-overlay" id="synopsisLightbox" onclick="closeSynopsisModal(event)" data-lenis-prevent>
+        <button class="synopsis-modal-close-btn" onclick="closeSynopsisModal(event)" aria-label="Close synopsis pop-up">&times;</button>
         <div class="synopsis-modal-box" onclick="event.stopPropagation()">
-            <button class="synopsis-modal-close-btn" onclick="closeSynopsisModal(event)" aria-label="Close synopsis pop-up">&times;</button>
             
             <!-- Left Hand Side Information -->
             <div class="synopsis-left">
                 <p>In this platformer, you control a piece of tofu named Hamachi, who unexpectedly falls into the possession of Demon Queen Deity, an evil fiend who intends to use him as a vessel to conquer the world through mass murder.</p>
-                <strong style="color: #ff3333; display: block; margin-top: 15px;">FEATURES:</strong>
+                <strong style="color: #ff3333; display: block; margin-top: 25px;">FEATURES:</strong>
                 <ul>
                     <li>Play as the villain: Choose to kill, spare, or ignore every civilian.</li>
                     <li>Three distinct routes: Pacifist, Neutral, and Genocide, each with its own ending.</li>
@@ -576,14 +611,27 @@
                 </ul>
             </div>
 
-            <!-- Right Hand Side Information -->
+            <!-- Right Hand Side Key-Value Grid Layout -->
             <div class="synopsis-right">
-                <p><strong style="color: #ff3333;">TITLE:</strong><br>Hamachi the Psychotic Killer</p>\
-                <p><strong style="color: #ff3333;">GENRE:</strong><br>Action, Indie</p>\
-                <p><strong style="color: #ff3333;">DEVELOPER:</strong><br>gavinoriley</p>\
-                <p><strong style="color: #ff3333;">PUBLISHER:</strong><br>gavinoriley</p>\
-                <p><strong style="color: #ff3333;">RELEASE DATE:</strong><br>Feb 27, 2026</p>\
-                <p><strong style="color: #ff3333;">PLATFORM:</strong><br>Windows/Mac</p>\
+                <div class="synopsis-grid">
+                    <div class="synopsis-key">TITLE:</div>
+                    <div class="synopsis-value">Hamachi the Psychotic Killer</div>
+                    
+                    <div class="synopsis-key">GENRE:</div>
+                    <div class="synopsis-value">Action, Indie</div>
+                    
+                    <div class="synopsis-key">DEVELOPER:</div>
+                    <div class="synopsis-value">gavinoriley</div>
+                    
+                    <div class="synopsis-key">PUBLISHER:</div>
+                    <div class="synopsis-value">gavinoriley</div>
+                    
+                    <div class="synopsis-key">RELEASE DATE:</div>
+                    <div class="synopsis-value">Feb 27, 2026</div>
+                    
+                    <div class="synopsis-key">PLATFORM:</div>
+                    <div class="synopsis-value">Windows/Mac</div>
+                </div>
             </div>
         </div>
     </div>
@@ -610,7 +658,6 @@
 
             <!-- Embedded X Video Component Wrapper -->
             <div class="video-wrapper" style="flex: 0 0 auto; max-width: 900px; width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
-                <!-- Fixed: Expanded X blockquote width limits for enhanced visibility -->
                 <blockquote class="twitter-video" data-lang="en" data-theme="dark" style="width: 100%; max-width: 850px; margin: 0 auto;">
                     <a href="https://x.com/TheDeepRoblox/status/2072483039209218242"></a>
                 </blockquote>
@@ -638,7 +685,7 @@
             <!-- YouTube Embedded Powerup Theme Video Component Wrapper -->
             <div class="video-wrapper" style="max-width: 1000px; width: 100%;">
                 <iframe width="100%" height="562" src="https://www.youtube.com/embed/C7lAc6bOt4k" frameborder="0" allowfullscreen style="width: 100%; height: 562px; border: none;"></iframe>
-                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's Power-up Them for The Deep Silence</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's Power-up Theme for The Deep Silence</p>
             </div>
         </div>
         
@@ -894,7 +941,7 @@
             });
         });
 
-        console.log('%c🪓 Lenis inertial smooth scroll initialized', 'color: #ffdd88; font-family: monospace;');
+        console.log('%c🪶 Lenis inertial smooth scroll initialized', 'color: #ffdd88; font-family: monospace;');
     </script>
 </body>
 </html>
