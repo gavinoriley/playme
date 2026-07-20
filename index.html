@@ -389,7 +389,7 @@
         .screenshot-caption {
             text-align: center;
             margin-top: 8px;
-            font-size: 15px;
+            font-size: 22px; /* Fixed: Enhanced visibility for gallery/carousel captions */
             color: #ddd;
         }
         .roblox-render-container {
@@ -490,28 +490,29 @@
             <img src="https://gavinoriley.github.io/assets/awardlaur.png" alt="Awards Graphic" class="award-image" onclick="openModal(this.src)">
         </div>
         
-        <h2 class="red">Roblox 3D Fan Adaptation</h2>
+        <h2 class="red">Fan-Made 3D Roblox Adaptation</h2>
         <div class="videos-container" style="flex-direction: column; align-items: center;">
-            <p style="text-align: center; max-width: 900px; line-height: 1.6; font-size: 16px; margin-bottom: 25px;">
-                Hamachi will be featured as a playable killer in the upcoming Roblox game, The Deep Silence, which is currently in development. 
-                <a href="https://x.com/TheDeepRoblox" target="_blank" class="roblox-text-link">Click here to view their work!</a>
+            <p style="text-align: center; max-width: 900px; line-height: 1.6; font-size: 22px; margin-bottom: 25px;">
+                Hamachi will be featured as a playable killer in the upcoming Roblox game The Deep Silence, which is currently in development. 
+                <a href="https://x.com/TheDeepRoblox" target="_blank" class="roblox-text-link">Click here to view the team's work.</a>
                 <br><br>
-                <span style="font-style: italic; color: #cccccc; display: block; font-size: 15px;">Note: I am not affiliated with the development of The Deep Silence, nor is The Deep Silence development team affiliated with the development of Hamachi the Psychotic Killer. All credit for The Deep Silence belongs to its development team.</span>
+                <span style="font-style: italic; color: #cccccc; display: block; font-size: 18px;">Note: I am not affiliated with the development of The Deep Silence, and its developers are not affiliated with Hamachi the Psychotic Killer. The Deep Silence is an independent project, and all credit belongs to its development team.</span>
             </p>
 
             <!-- Embedded X Video Component Wrapper -->
             <div class="video-wrapper" style="flex: 0 0 auto; max-width: 900px; width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 30px;">
-                <blockquote class="twitter-video" data-lang="en" data-theme="dark" style="width: 100%; max-width: 550px; margin: 0 auto;">
+                <!-- Fixed: Expanded X blockquote width limits for enhanced visibility -->
+                <blockquote class="twitter-video" data-lang="en" data-theme="dark" style="width: 100%; max-width: 850px; margin: 0 auto;">
                     <a href="https://x.com/TheDeepRoblox/status/2072483039209218242"></a>
                 </blockquote>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                <p style="text-align: center; margin-top: 12px; font-size: 16px;">Hamachi's new Roblox Model/Ability Demonstration</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's new Roblox Model/Ability Demonstration</p>
             </div>
 
             <!-- Drive Video Component Wrapper -->
             <div class="video-wrapper" style="flex: 0 0 auto; max-width: 900px; width: 100%; margin-bottom: 30px;">
                 <iframe src="https://drive.google.com/file/d/1nj5ezBpLL-szqQZ-ElnoiPgdA0qZFoAp/preview" width="900" height="675" style="width: 100%; height: 675px; border: none;" allowfullscreen></iframe>
-                <p style="text-align: center; margin-top: 12px; font-size: 16px;">Prototype Demonstration</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Prototype Demonstration</p>
             </div>
 
             <div class="roblox-render-container">
@@ -522,13 +523,13 @@
             <!-- New YouTube Embedded Chase Theme Video Component Wrapper -->
             <div class="video-wrapper" style="max-width: 1000px; width: 100%; margin-bottom: 30px;">
                 <iframe width="100%" height="562" src="https://www.youtube.com/embed/yYz29aGQRyk" frameborder="0" allowfullscreen style="width: 100%; height: 562px; border: none;"></iframe>
-                <p style="text-align: center; margin-top: 12px; font-size: 16px;">Hamachi's Chase Theme</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's Chase Theme for The Deep Silence</p>
             </div>
 
             <!-- YouTube Embedded Powerup Theme Video Component Wrapper -->
             <div class="video-wrapper" style="max-width: 1000px; width: 100%;">
                 <iframe width="100%" height="562" src="https://www.youtube.com/embed/C7lAc6bOt4k" frameborder="0" allowfullscreen style="width: 100%; height: 562px; border: none;"></iframe>
-                <p style="text-align: center; margin-top: 12px; font-size: 16px;">Powerup Theme</p>
+                <p style="text-align: center; margin-top: 12px; font-size: 22px;">Hamachi's Power-up Them for The Deep Silence</p>
             </div>
         </div>
         
@@ -649,15 +650,15 @@
             <div class="carousel" id="endings-carousel">
                 <div class="carousel-item active">
                     <img src="https://gavinoriley.github.io/assets/genoendingprev.gif">
-                    <p style="text-align:center">Genocide Variance.</p>
+                    <p style="text-align:center; font-size: 22px;">Genocide Variance.</p>
                 </div>
                 <div class="carousel-item">
                     <img src="https://gavinoriley.github.io/assets/neuendingprev.gif">
-                    <p style="text-align:center">Neutral Variance.</p>
+                    <p style="text-align:center; font-size: 22px;">Neutral Variance.</p>
                 </div>
                 <div class="carousel-item">
                     <img src="https://gavinoriley.github.io/assets/pacendingprev.gif">
-                    <p style="text-align:center">Pacifist Variance.</p>
+                    <p style="text-align:center; font-size: 22px;">Pacifist Variance.</p>
                 </div>
                 <a class="prev">&#10094;</a><a class="next">&#10095;</a>
             </div>
@@ -779,7 +780,7 @@
             });
         });
 
-        console.log('%c✂️  Lenis inertial smooth scroll initialized', 'color: #ffdd88; font-family: monospace;');
+        console.log('%c✂️ Lenis inertial smooth scroll initialized', 'color: #ffdd88; font-family: monospace;');
     </script>
 </body>
 </html>
