@@ -526,7 +526,7 @@
 
         /* === HAMACHI PITCH DECK FLIPBOOK STYLES === */
         .pitchdeck-category-wrapper {
-            background-color: #181818;
+            background-color: #333333; /* Brighter background to give contrast to black images */
             border-radius: 12px;
             padding: 30px 20px;
             margin: 25px 0;
@@ -651,7 +651,7 @@
 
         /* Fullscreen Wrapper State */
         .pitchdeck-category-wrapper:fullscreen {
-            background-color: #111111;
+            background-color: #282828;
             width: 100vw;
             height: 100vh;
             padding: 40px;
@@ -663,7 +663,7 @@
         }
 
         .pitchdeck-category-wrapper:-webkit-full-screen {
-            background-color: #111111;
+            background-color: #282828;
             width: 100vw;
             height: 100vh;
             padding: 40px;
@@ -1005,12 +1005,6 @@
             </div>
         </div>
 
-        <!-- OFFICIAL SKETCH CATEGORY SECTION -->
-        <h2 class="red">Hamachi Official Sketch</h2>
-        <div class="screenshots-container">
-            <img src="https://gavinoriley.github.io/assets/officialsketch.png" alt="Hamachi Official Sketch" style="max-width: 800px; width: 100%; height: auto; cursor: pointer; border-radius: 8px;" onclick="openModal(this.src)">
-        </div>
-
         <!-- CATEGORY: HAMACHI PITCH DECK FLIPBOOK -->
         <h2 class="red">Hamachi Pitch Deck</h2>
         <div class="pitchdeck-category-wrapper" id="pitchdeckCategoryBox">
@@ -1063,6 +1057,12 @@
                 <!-- External Right Arrow -->
                 <button class="flipbook-nav-arrow next" id="pitchdeckNextBtn" aria-label="Next Page">&#10095;</button>
             </div>
+        </div>
+
+        <!-- OFFICIAL SKETCH CATEGORY SECTION -->
+        <h2 class="red">Hamachi Official Sketch</h2>
+        <div class="screenshots-container">
+            <img src="https://gavinoriley.github.io/assets/officialsketch.png" alt="Hamachi Official Sketch" style="max-width: 450px; width: 100%; height: auto; cursor: pointer; border-radius: 8px;" onclick="openModal(this.src)">
         </div>
 
         <h2 class="red">Printable 3D Hamachi Cube - Click him!</h2>
