@@ -32,6 +32,9 @@
     <!-- Lenis Smooth Scroll CSS -->
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
 
+    <!-- PageFlip JS Engine CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -70,6 +73,7 @@
             overflow: hidden;
         }
 
+        /* Sleeker & Thinner Navigation Bar */
         .navbar {
             position: fixed;
             top: 0;
@@ -77,10 +81,10 @@
             width: 100%;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
-            padding: 9px 0;
+            padding: 5px 0;
             display: flex;
             justify-content: center;
-            gap: 48px;
+            gap: 32px;
             z-index: 1000;
             border-bottom: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
@@ -89,8 +93,10 @@
             font-family: Arial, Helvetica, sans-serif;
             color: #fff;
             text-decoration: none;
-            font-size: 24px;
-            padding: 6px 14px;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
             border-radius: 4px;
             transition: color 0.3s ease;
         }
@@ -99,12 +105,12 @@
         }
         @media (max-width: 768px) {
             .navbar {
-                gap: 20px;
+                gap: 16px;
                 flex-wrap: wrap;
-                padding: 8px 0;
+                padding: 6px 0;
             }
             .navbar a {
-                font-size: 16px;
+                font-size: 13px;
             }
         }
 
@@ -518,6 +524,156 @@
             text-decoration: underline;
         }
 
+        /* === HAMACHI PITCH DECK FLIPBOOK STYLES === */
+        .pitchdeck-category-wrapper {
+            background-color: #181818;
+            border-radius: 12px;
+            padding: 30px 20px;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .pitchdeck-top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 0 20px;
+        }
+
+        .pitchdeck-fullscreen-btn,
+        .pitchdeck-download-btn {
+            background: #cc1111;
+            color: #ffffff;
+            border: none;
+            padding: 8px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .pitchdeck-fullscreen-btn:hover,
+        .pitchdeck-download-btn:hover {
+            background: #ff3333;
+            transform: translateY(-1px);
+        }
+
+        .flipbook-viewport-container {
+            position: relative;
+            width: 100%;
+            max-width: 1250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 620px;
+            padding: 10px 60px;
+        }
+
+        .flipbook-element {
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+            margin: 0 auto;
+        }
+
+        /* CRUCIAL FIX: Hide raw pages prior to PageFlip JS engine taking control */
+        #pitchdeckFlipbook > .page {
+            display: none;
+        }
+
+        .flipbook-element .page {
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        .flipbook-element .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* Target PageFlip generated blank/dummy page slots to prevent white rectangles */
+        .stpage.--blank {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        /* Nav Arrows Outside Book */
+        .flipbook-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+            border: 2px solid #cc1111;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.5;
+            transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+            user-select: none;
+        }
+
+        .flipbook-nav-arrow:hover {
+            opacity: 1;
+            background: #cc1111;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .flipbook-nav-arrow.prev {
+            left: 10px;
+        }
+
+        .flipbook-nav-arrow.next {
+            right: 10px;
+        }
+
+        /* Fullscreen Wrapper State */
+        .pitchdeck-category-wrapper:fullscreen {
+            background-color: #111111;
+            width: 100vw;
+            height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .pitchdeck-category-wrapper:-webkit-full-screen {
+            background-color: #111111;
+            width: 100vw;
+            height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
         /* Video Hero / Responsive Breakpoint Rules */
         @media screen and (max-width: 768px) {
             .title-section { padding-top: 0; }
@@ -557,10 +713,24 @@
             .award-image {
                 max-width: 100%;
             }
+
+            /* Flipbook Mobile Tweaks */
+            .flipbook-viewport-container {
+                padding: 10px 45px;
+                min-height: 420px;
+            }
+            .flipbook-nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+            .flipbook-nav-arrow.prev { left: 2px; }
+            .flipbook-nav-arrow.next { right: 2px; }
         }
     </style>
 </head>
 <body>
+    <!-- Top Navigation Bar -->
     <nav class="navbar">
         <a href="https://hamachithepsychotickiller.com">VISIT MAIN WEBSITE</a>
         <a href="https://store.steampowered.com/app/3355690/Hamachi_the_Psychotic_Killer/" target="_blank">VISIT STEAM PAGE</a>
@@ -584,8 +754,6 @@
                         <a href="#" class="pill-btn" onclick="openSynopsisModal(event)">SYNOPSIS</a>
                         <a href="#" class="pill-btn" onclick="openTrailerModal(event)">WATCH TRAILER</a>
                         <a href="https://itch.io/embed-upload/16876356?color=333333" target="_blank" rel="noopener noreferrer" class="pill-btn">PLAY DEMO IN BROWSER</a>
-                        
-                    
                     </div>
                 </div>
             </div>
@@ -648,7 +816,7 @@
         </div>
     </div>
 
-    <!-- MAIN BODY CONTENT CONTENT WRAPPER -->
+    <!-- MAIN BODY CONTENT WRAPPER -->
     <div class="main-content-wrapper">
         <p style="text-align: center; color: white; font-size: 24px; margin: 30px 0 10px 0; font-style: italic;">The platformer game where you can play as the BAD GUY. (Or the good guy)</p>
         <p style="text-align: center; color: #cccccc; font-size: 14px; margin: 0 0 30px 0;">&lt;If assets fail to load on this page, simply refresh!&gt;</p>
@@ -754,7 +922,7 @@
             </div>
         </div>
         
-        <!-- UPDATED LEARNING / SYNOPSIS SECTION -->
+        <!-- LEARNING / SYNOPSIS SECTION -->
         <div class="top-section" id="factsheet">
             <div class="factsheet-block" style="text-align: center; padding: 40px 20px;">
                 <h2 class="red" style="margin-top: 0;">Learn more about the Game</h2>
@@ -829,7 +997,7 @@
             </div>
         </div>
 
-        <!-- NEW ENDINGS YOUTUBE CATEGORY SECTION -->
+        <!-- ENDINGS YOUTUBE CATEGORY SECTION -->
         <h2 class="red">Watch a Quick Highlight of all Endings of Hamachi - Genocide, Neutral, Pacifist</h2>
         <div class="screenshots-container" style="padding: 40px 20px;">
             <div style="max-width: 1200px; width: 100%; aspect-ratio: 16 / 9; box-shadow: 0 15px 50px rgba(204, 17, 17, 0.5); border: 3px solid #cc1111; border-radius: 8px; overflow: hidden; background-color: #000;">
@@ -837,10 +1005,64 @@
             </div>
         </div>
 
-        <!-- NEW OFFICIAL SKETCH CATEGORY SECTION -->
+        <!-- OFFICIAL SKETCH CATEGORY SECTION -->
         <h2 class="red">Hamachi Official Sketch</h2>
         <div class="screenshots-container">
             <img src="https://gavinoriley.github.io/assets/officialsketch.png" alt="Hamachi Official Sketch" style="max-width: 800px; width: 100%; height: auto; cursor: pointer; border-radius: 8px;" onclick="openModal(this.src)">
+        </div>
+
+        <!-- CATEGORY: HAMACHI PITCH DECK FLIPBOOK -->
+        <h2 class="red">Hamachi Pitch Deck</h2>
+        <div class="pitchdeck-category-wrapper" id="pitchdeckCategoryBox">
+            <!-- Top action bar containing Download PDF & Fullscreen buttons -->
+            <div class="pitchdeck-top-bar">
+                <a href="https://drive.google.com/file/d/1qO02KAQUQp8VMOefXpg6hb4u6ccUMqv9/view?usp=share_link" target="_blank" rel="noopener noreferrer" class="pitchdeck-download-btn">Download PDF</a>
+                <button class="pitchdeck-fullscreen-btn" id="pitchdeckFullscreenBtn" onclick="togglePitchdeckFullscreen()">Fullscreen</button>
+            </div>
+
+            <div class="flipbook-viewport-container">
+                <!-- External Left Arrow -->
+                <button class="flipbook-nav-arrow prev" id="pitchdeckPrevBtn" aria-label="Previous Page">&#10094;</button>
+
+                <!-- Flipbook Container -->
+                <div id="pitchdeckFlipbook" class="flipbook-element">
+                    <!-- Page 1 (Cover) -->
+                    <div class="page hard-page" data-density="hard">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage1.webp" alt="Pitch Deck Cover - Page 1" loading="eager">
+                    </div>
+                    <!-- Page 2 -->
+                    <div class="page" data-density="soft">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage2.webp" alt="Pitch Deck Page 2" loading="eager">
+                    </div>
+                    <!-- Page 3 -->
+                    <div class="page" data-density="soft">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage3.webp" alt="Pitch Deck Page 3" loading="eager">
+                    </div>
+                    <!-- Page 4 -->
+                    <div class="page" data-density="soft">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage4.webp" alt="Pitch Deck Page 4" loading="eager">
+                    </div>
+                    <!-- Page 5 -->
+                    <div class="page" data-density="soft">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage5.webp" alt="Pitch Deck Page 5" loading="eager">
+                    </div>
+                    <!-- Page 6 -->
+                    <div class="page" data-density="soft">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage6.webp" alt="Pitch Deck Page 6" loading="eager">
+                    </div>
+                    <!-- Page 7 -->
+                    <div class="page" data-density="soft">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage7.webp" alt="Pitch Deck Page 7" loading="eager">
+                    </div>
+                    <!-- Page 8 (Back Cover) -->
+                    <div class="page hard-page" data-density="hard">
+                        <img src="https://gavinoriley.github.io/assets/newdockdeckpage8.webp" alt="Pitch Deck Page 8" loading="eager">
+                    </div>
+                </div>
+
+                <!-- External Right Arrow -->
+                <button class="flipbook-nav-arrow next" id="pitchdeckNextBtn" aria-label="Next Page">&#10095;</button>
+            </div>
         </div>
 
         <h2 class="red">Printable 3D Hamachi Cube - Click him!</h2>
@@ -860,7 +1082,7 @@
                 <a href="https://hamachithepsychotickiller.com" target="_blank">Official Site</a>
             </p>
             <p>
-                <a href="https://x.com/imgavinoriley" target="_blank">My 𝕏 Page</a>
+                <a href="https://x.com/imgavinoriley" target="_blank">My Page</a>
             </p>
             <p>
                 <a href="https://gamejolt.com/games/hamachithepsychotickiller/334593" target="_blank">GameJolt Page</a>
@@ -892,6 +1114,49 @@
             stopInertiaOnNavigate: true
         });
 
+        // Global Pitch Deck Flipbook Instance Variable
+        let pageFlipInstance = null;
+
+        function initFlipbook() {
+            const flipbookContainer = document.getElementById('pitchdeckFlipbook');
+            if (!flipbookContainer || !window.St || !window.St.PageFlip) return;
+            if (pageFlipInstance) return; // Prevent duplicate instantiation
+
+            pageFlipInstance = new St.PageFlip(flipbookContainer, {
+                width: 500,             // Base single page width
+                height: 707,            // Base single page height
+                size: "stretch",        // Scale dynamically to parent
+                minWidth: 250,
+                maxWidth: 600,
+                minHeight: 353,
+                maxHeight: 849,
+                maxShadowOpacity: 0.6,   // Dynamic page-fold shadow strength
+                showCover: true,        // Displays Cover Page (Page 1) standalone
+                mobileScrollSupport: false,
+                useMouseEvents: true,
+                drawShadow: true,
+                flippingTime: 800
+            });
+
+            // Target direct children and reveal them right before St.PageFlip loads them
+            const rawPages = flipbookContainer.querySelectorAll(':scope > .page');
+            rawPages.forEach(p => p.style.display = 'block');
+
+            // Ingest HTML elements into 3D Flipbook canvas
+            pageFlipInstance.loadFromHTML(rawPages);
+
+            // Connect Left & Right Navigation Buttons
+            const prevBtn = document.getElementById('pitchdeckPrevBtn');
+            const nextBtn = document.getElementById('pitchdeckNextBtn');
+            
+            if (prevBtn) {
+                prevBtn.onclick = () => pageFlipInstance.flipPrev();
+            }
+            if (nextBtn) {
+                nextBtn.onclick = () => pageFlipInstance.flipNext();
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             function initCarousel(carouselId) {
                 const carousel = document.getElementById(carouselId);
@@ -914,7 +1179,94 @@
 
             initCarousel('fanart-carousel');
             initCarousel('screenshot-carousel');
+
+            // Preload Pitch Deck Images
+            const pitchDeckUrls = [
+                "https://gavinoriley.github.io/assets/newdockdeckpage1.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage2.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage3.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage4.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage5.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage6.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage7.webp",
+                "https://gavinoriley.github.io/assets/newdockdeckpage8.webp"
+            ];
+            pitchDeckUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+
+            // Initialize 3D Pitch Deck
+            initFlipbook();
         });
+
+        // Fail-safe initialization on full window load
+        window.addEventListener('load', initFlipbook);
+
+        /* Fullscreen Toggle Function for Pitch Deck */
+        function togglePitchdeckFullscreen() {
+            const categoryBox = document.getElementById('pitchdeckCategoryBox');
+            if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                if (categoryBox.requestFullscreen) {
+                    categoryBox.requestFullscreen();
+                } else if (categoryBox.webkitRequestFullscreen) {
+                    categoryBox.webkitRequestFullscreen();
+                } else if (categoryBox.msRequestFullscreen) {
+                    categoryBox.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Fullscreen state listener to restore Lenis smooth scrolling upon exit
+        function handleFullscreenChange() {
+            const fullscreenBtn = document.getElementById('pitchdeckFullscreenBtn');
+            const isFS = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+            
+            if (fullscreenBtn) {
+                fullscreenBtn.textContent = isFS ? "Exit Fullscreen" : "Fullscreen";
+            }
+
+            if (isFS) {
+                // Pause Lenis smooth scrolling engine while in fullscreen
+                if (typeof lenis !== 'undefined' && lenis) {
+                    lenis.stop();
+                }
+            } else {
+                // Force-clear potential scroll lock styles & classes and restart Lenis scroll engine
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+                document.body.classList.remove('lenis-stopped');
+                document.documentElement.classList.remove('lenis-stopped');
+
+                if (typeof lenis !== 'undefined' && lenis) {
+                    lenis.start();
+                    setTimeout(() => {
+                        lenis.resize();
+                    }, 100);
+                }
+            }
+
+            if (pageFlipInstance) {
+                setTimeout(() => {
+                    pageFlipInstance.update();
+                    if (typeof lenis !== 'undefined' && lenis) {
+                        lenis.resize();
+                    }
+                }, 150);
+            }
+        }
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('msfullscreenchange', handleFullscreenChange);
 
         /* Video Modal Control Functions */
         const trailerLightbox = document.getElementById('trailerLightbox');
@@ -977,8 +1329,6 @@
                 }
             });
         });
-
-        console.log('%c Lenis inertial smooth scroll initialized', 'color: #ffdd88; font-family: monospace;');
     </script>
 </body>
 </html>
