@@ -654,7 +654,7 @@
             background-color: #282828;
             width: 100vw;
             height: 100vh;
-            padding: 40px;
+            padding: 20px 30px 30px 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -666,12 +666,22 @@
             background-color: #282828;
             width: 100vw;
             height: 100vh;
-            padding: 40px;
+            padding: 20px 30px 30px 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+        }
+
+        /* Allow Flipbook Viewport Container to Expand in Fullscreen */
+        .pitchdeck-category-wrapper:fullscreen .flipbook-viewport-container,
+        .pitchdeck-category-wrapper:-webkit-full-screen .flipbook-viewport-container {
+            max-width: 100%;
+            width: 100%;
+            height: calc(100vh - 80px);
+            flex: 1;
+            padding: 10px 70px;
         }
 
         /* Video Hero / Responsive Breakpoint Rules */
@@ -1082,7 +1092,7 @@
                 <a href="https://hamachithepsychotickiller.com" target="_blank">Official Site</a>
             </p>
             <p>
-                <a href="https://x.com/imgavinoriley" target="_blank">My 𝕏 Page</a>
+                <a href="https://x.com/imgavinoriley" target="_blank">My  Page</a>
             </p>
             <p>
                 <a href="https://gamejolt.com/games/hamachithepsychotickiller/334593" target="_blank">GameJolt Page</a>
@@ -1127,9 +1137,9 @@
                 height: 707,            // Base single page height
                 size: "stretch",        // Scale dynamically to parent
                 minWidth: 250,
-                maxWidth: 600,
+                maxWidth: 2000,         // Scalable up for fullscreen displays
                 minHeight: 353,
-                maxHeight: 849,
+                maxHeight: 2800,        // Scalable up for fullscreen displays
                 maxShadowOpacity: 0.6,   // Dynamic page-fold shadow strength
                 showCover: true,        // Displays Cover Page (Page 1) standalone
                 mobileScrollSupport: false,
@@ -1261,6 +1271,9 @@
                         lenis.resize();
                     }
                 }, 150);
+                setTimeout(() => {
+                    pageFlipInstance.update();
+                }, 300);
             }
         }
 
